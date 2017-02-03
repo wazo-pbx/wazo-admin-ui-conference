@@ -1,0 +1,2 @@
+recursive-include conference/templates *
+recursive-include conference/static *
