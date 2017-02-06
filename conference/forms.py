@@ -2,7 +2,7 @@
 # Copyright 2017 by Sylvain Boily
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 
 from wtforms.fields import SubmitField
 from wtforms.fields import TextField
@@ -12,7 +12,7 @@ from wtforms.validators import DataRequired
 from wtforms.validators import Optional
 
 
-class FormConference(Form):
+class FormConference(FlaskForm):
     name = TextField('Name', [DataRequired()])
     extension = TextField('Extension', [Optional()])
     announce_join_leave = BooleanField('Announce join leave', default=True)
