@@ -1,5 +1,2 @@
 enabled_plugins:
-  - authentication
-  - admin
-  - index
-  - conference
+  conference: true
