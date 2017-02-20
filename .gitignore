@@ -1,0 +1,5 @@
+build
+dist
+wazo_admin_ui_conference.egg-info
+*.swp
+*.pyc
