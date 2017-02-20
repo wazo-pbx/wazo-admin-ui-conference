@@ -1,6 +1,14 @@
 Conference plugin for wazo-admin-ui
 
-Copy etc/wazo-admin-ui/conf.d/conference.yml to /etc/wazo-admin-ui/conf.d
+Install
+-------
 
-To install: python setup.py install and systemctl restart wazo-admin-ui
+    make install
+
+Uninstall
+---------
+
+You need to have python-pip installed.
+
+    make uninstall
 
