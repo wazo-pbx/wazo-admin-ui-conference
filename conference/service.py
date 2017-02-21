@@ -20,9 +20,12 @@ class ConferenceService(object):
         return self._confd.conferences.list()
 
     def get(self, conference_id):
-        return self._confd.conferences.get(conference_id)
+        return {'conference': self._confd.conferences.get(conference_id)}
 
-    def update(self, conference, extension):
+    def update(self, resources):
+        conference = resources.get('conference')
+        extension = resources.get('extension')
+
         existing_extension = self._get_main_extension(conference['id'])
 
         self._confd.conferences.update(conference)
@@ -42,7 +45,10 @@ class ConferenceService(object):
             return extension
         return None
 
-    def create(self, conference, extension):
+    def create(self, resources):
+        conference = resources.get('conference')
+        extension = resources.get('extension')
+
         conference = self._confd.conferences.create(conference)
         if conference and extension:
             self._add_extension(conference['id'], extension)
