@@ -1,15 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-    <section class="content-header">
-      <h1>
-        Conferences
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-compress"></i> Conferences</a></li>
-        <li class="active">View</li>
-      </ol>
-    </section>
+  {{ build_breadcrumb('Conferences', '', 'compress', ['List']) }}
 {% endblock %}
 
 {% block content %}

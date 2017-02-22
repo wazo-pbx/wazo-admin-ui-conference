@@ -1,15 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-    <section class="content-header">
-      <h1>
-        Conferences
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-compress"></i> Conferences</a></li>
-        <li class="active">List</li>
-      </ol>
-    </section>
+  {{ build_breadcrumb('Conferences', '', 'compress', ['List']) }}
 {% endblock %}
 
 {% block content %}
@@ -28,7 +20,7 @@
         </div>
 
         <div class="box-body">
-          <table id="table-conferences" class="table table-condensed">
+          <table id="table-list" class="table table-condensed">
             <thead>
               <tr>
                 <th>Name</th>

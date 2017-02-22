@@ -16,13 +16,13 @@ from .form import ConferenceForm
 class ConferenceSchema(BaseSchema):
 
     class Meta:
-        additional = ('name',
-                      'announce_join_leave',
-                      'announce_user_count',
-                      'announce_only_user',
-                      'music_on_hold',
-                      'preprocess_subroutine',
-                      'quiet_join_leave')
+        fields = ('name',
+                  'announce_join_leave',
+                  'announce_user_count',
+                  'announce_only_user',
+                  'music_on_hold',
+                  'preprocess_subroutine',
+                  'quiet_join_leave')
 
 
 class ExtensionSchema(BaseSchema):
