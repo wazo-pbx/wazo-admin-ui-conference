@@ -1,5 +1,5 @@
 build
 dist
-wazo_admin_ui_conference.egg-info
+*.egg-info
 *.swp
 *.pyc
