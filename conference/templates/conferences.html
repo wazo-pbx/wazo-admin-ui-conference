@@ -13,7 +13,7 @@
           <i class="fa fa-compress"></i>
           <h3 class="box-title">Conferences</h3>
           <div class="box-tools">
-            <a href="#" id="add-conference" class="btn btn-box-tool">
+            <a href="#" id="add-form" class="btn btn-box-tool">
               <i class="fa fa-plus"></i>
             </a>
           </div>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="col-lg-4">
-      <div class="box box-info hidden" id="view-add-conference">
+      <div class="box box-info hidden" id="view-add-form">
         <div class="box-header with-border">
           <h3 class="box-title">Add Conference</h3>
           <div class="pull-right box-tools">
@@ -93,8 +93,4 @@
     </div>
   </section>
 
-{% endblock %}
-
-{% block additional_js %}
-  <script src="{{ url_for('conference.static', filename='js/conferences.js') }}"></script>
 {% endblock %}
