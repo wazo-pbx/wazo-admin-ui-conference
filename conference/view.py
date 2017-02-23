@@ -52,8 +52,8 @@ class ConferenceView(BaseView):
     form = ConferenceForm
     resource = 'conference'
     schema = ConferenceFormSchema
-    templates = {'list': 'conferences.html',
-                 'edit': 'view_conference.html'}
+    templates = {'list': 'conference/list.html',
+                 'edit': 'conference/view.html'}
 
     @classy_menu_item('.conferences', 'Conferences', order=1, icon="compress")
     def index(self):
