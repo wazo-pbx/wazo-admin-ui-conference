@@ -2,25 +2,13 @@
 # Copyright 2017 by Sylvain Boily
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask_login import current_user
-from xivo_confd_client import Client as ConfdClient
+from wazo_admin_ui.helpers.service import BaseConfdService
 
 
-class ConferenceService(object):
+class ConferenceService(BaseConfdService):
 
-    def __init__(self, confd_config):
-        self.confd_config = confd_config
-
-    @property
-    def _confd(self):
-        token = current_user.get_id()
-        return ConfdClient(token=token, **self.confd_config)
-
-    def list(self):
-        return self._confd.conferences.list()
-
-    def get(self, conference_id):
-        return {'conference': self._confd.conferences.get(conference_id)}
+    resource = 'conference'
+    confd_resource = 'conferences'
 
     def update(self, resources):
         conference = resources.get('conference')
