@@ -42,8 +42,6 @@ class ConferenceView(BaseView):
     form = ConferenceForm
     resource = 'conference'
     schema = AggregatorSchema
-    templates = {'list': 'conference/list.html',
-                 'edit': 'conference/view.html'}
 
     @classy_menu_item('.conferences', 'Conferences', order=1, icon="compress")
     def index(self):
