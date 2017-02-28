@@ -5,10 +5,10 @@
 from __future__ import unicode_literals
 
 from flask_menu.classy import classy_menu_item
-from marshmallow import fields, post_load, pre_dump
+from marshmallow import fields
 
 from wazo_admin_ui.helpers.classful import BaseView
-from wazo_admin_ui.helpers.mallow import BaseSchema
+from wazo_admin_ui.helpers.mallow import BaseSchema, BaseAggregatorSchema
 
 from .form import ConferenceForm
 
@@ -30,31 +30,27 @@ class ExtensionSchema(BaseSchema):
     exten = fields.String(attribute='extension')
 
 
-class ConferenceFormSchema(BaseSchema):
+class AggregatorSchema(BaseAggregatorSchema):
     _main_resource = 'conference'
 
     conference = fields.Nested(ConferenceSchema)
     extension = fields.Nested(ExtensionSchema)
-
-    @post_load(pass_original=True)
-    def create_form(self, data, raw_data):
-        main_exten = self.get_main_exten(raw_data['conference'].get('extensions', {}))
-        return ConferenceForm(data=data['conference'], extension=main_exten)
-
-    @pre_dump
-    def add_envelope(self, data):
-        return {'conference': data,
-                'extension': data}
 
 
 class ConferenceView(BaseView):
 
     form = ConferenceForm
     resource = 'conference'
-    schema = ConferenceFormSchema
+    schema = AggregatorSchema
     templates = {'list': 'conference/list.html',
                  'edit': 'conference/view.html'}
 
     @classy_menu_item('.conferences', 'Conferences', order=1, icon="compress")
     def index(self):
         return super(ConferenceView, self).index()
+
+    def _map_resources_to_form(self, resources):
+        schema = self.schema()
+        data = schema.load(resources).data
+        main_exten = schema.get_main_exten(resources['conference'].get('extensions', {}))
+        return self.form(data=data['conference'], extension=main_exten)
