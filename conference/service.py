@@ -26,7 +26,7 @@ class ConferenceService(BaseConfdService):
         elif extension['exten']:
             self._add_extension(conference['id'], extension)
         elif not extension['exten'] and existing_extension:
-            self._remove_extension(conference['id'], extension['id'])
+            self._remove_extension(conference['id'], existing_extension['id'])
 
     def _get_main_extension(self, conference_id):
         for extension in self._confd.conferences.get(conference_id)['extensions']:
