@@ -22,7 +22,9 @@ class ConferenceSchema(BaseSchema):
                   'announce_only_user',
                   'music_on_hold',
                   'preprocess_subroutine',
-                  'quiet_join_leave')
+                  'quiet_join_leave',
+                  'pin',
+                  'admin_pin')
 
 
 class ExtensionSchema(BaseSchema):
