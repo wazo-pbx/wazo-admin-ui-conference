@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright 2017 by Sylvain Boily
+# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from setuptools import find_packages
@@ -12,10 +12,10 @@ setup(
 
     description='Wazo Admin Conference',
 
-    author='Sylvain Boily',
-    author_email='sboily@wazo.community',
+    author='Wazo Authors',
+    author_email='dev@wazo.community',
 
-    url='https://github.com/sboily/wazo-admin-conference',
+    url='http://wazo.community',
 
     packages=find_packages(),
     include_package_data=True,
@@ -27,4 +27,3 @@ setup(
         ]
     }
 )
-
