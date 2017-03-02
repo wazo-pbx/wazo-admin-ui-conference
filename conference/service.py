@@ -7,5 +7,5 @@ from wazo_admin_ui.helpers.service import BaseConfdExtensionService
 
 class ConferenceService(BaseConfdExtensionService):
 
-    resource = 'conference'
-    confd_resource = 'conferences'
+    resource_name = 'conference'
+    resource_confd = 'conferences'
