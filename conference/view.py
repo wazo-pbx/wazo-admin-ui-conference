@@ -8,7 +8,7 @@ from flask_menu.classy import classy_menu_item
 from marshmallow import fields
 
 from wazo_admin_ui.helpers.classful import BaseView
-from wazo_admin_ui.helpers.mallow import BaseSchema, BaseAggregatorSchema
+from wazo_admin_ui.helpers.mallow import BaseSchema, BaseAggregatorSchema, extract_form_fields
 
 from .form import ConferenceForm
 
@@ -16,15 +16,7 @@ from .form import ConferenceForm
 class ConferenceSchema(BaseSchema):
 
     class Meta:
-        fields = ('name',
-                  'announce_join_leave',
-                  'announce_user_count',
-                  'announce_only_user',
-                  'music_on_hold',
-                  'preprocess_subroutine',
-                  'quiet_join_leave',
-                  'pin',
-                  'admin_pin')
+        fields = extract_form_fields(ConferenceForm)
 
 
 class ExtensionSchema(BaseSchema):
