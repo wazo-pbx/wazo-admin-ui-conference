@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-  {% call wrap_form_with_section('Conference' + ' ' + resources.conference.name) %}
+  {% call wrap_form_with_section('Conference' ~ ' ' ~ resources.conference.name, 'compress') %}
     {% call wrap_fields_with_form(action=url_for('.ConferenceView:put', id=resources.conference.id)) %}
       {% call add_default_fields(form=form, submit_value="Update") %}
         {{ render_field(form.name) }}
