@@ -5,37 +5,21 @@
 {% endblock %}
 
 {% block content %}
-
-  <section class="content">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="box box-primary">
-          <div class="box-header with-border">
-            <i class="fa fa-compress"></i>
-            <h3 class="box-title">Conference {{ resources.conference.name }}</h3>
-            <div class="box-tools"></div>
-          </div>
-          <form class="form-horizontal" method="post" action="{{ url_for('.ConferenceView:put', id=resources.conference.id) }}">
-            <div class="box-body">
-              {{ form.csrf_token }}
-	      {{ render_field(form.name) }}
-	      {{ render_field(form.extension) }}
-    	      {{ render_field(form.pin) }}
-	      {{ render_field(form.admin_pin) }}
-	      {{ render_field(form.announce_join_leave) }}
-	      {{ render_field(form.announce_user_count) }}
-	      {{ render_field(form.announce_only_user) }}
-	      {{ render_field(form.music_on_hold) }}
-	      {{ render_field(form.preprocess_subroutine) }}
-	      {{ render_field(form.quiet_join_leave) }}
-	    </div>
-          <div class="box-footer">
-	    {{ render_field(form.submit, class_="btn btn-primary pull-right", value="Update", with_label=False) }}
-          </div>
-        </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  {% call wrap_form_with_section('Conference' + ' ' + resources.conference.name) %}
+    {% call wrap_fields_with_form(action=url_for('.ConferenceView:put', id=resources.conference.id)) %}
+      {% call add_default_fields(form=form, submit_value="Update") %}
+        {{ render_field(form.name) }}
+        {{ render_field(form.extension) }}
+        {{ render_field(form.pin) }}
+        {{ render_field(form.admin_pin) }}
+        {{ render_field(form.announce_join_leave) }}
+        {{ render_field(form.announce_user_count) }}
+        {{ render_field(form.announce_only_user) }}
+        {{ render_field(form.music_on_hold) }}
+        {{ render_field(form.preprocess_subroutine) }}
+        {{ render_field(form.quiet_join_leave) }}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
 {% endblock %}
+
