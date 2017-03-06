@@ -1,2 +1,3 @@
 recursive-include conference/templates *
 recursive-include conference/static *
+recursive-include conference/translations *
