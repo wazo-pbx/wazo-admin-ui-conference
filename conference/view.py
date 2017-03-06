@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 
+from flask_babel import lazy_gettext as l_
 from flask_menu.classy import classy_menu_item
 from marshmallow import fields
 
@@ -34,10 +35,10 @@ class AggregatorSchema(BaseAggregatorSchema):
 class ConferenceView(BaseView):
 
     form = ConferenceForm
-    resource = 'conference'
+    resource = l_('conference')
     schema = AggregatorSchema
 
-    @classy_menu_item('.conferences', 'Conferences', order=1, icon="compress")
+    @classy_menu_item('.conferences', l_('Conferences'), order=1, icon="compress")
     def index(self):
         return super(ConferenceView, self).index()
 

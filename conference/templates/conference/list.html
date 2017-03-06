@@ -1,28 +1,28 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumb('Conferences', '', 'compress', ['List']) }}
+  {{ build_breadcrumb(_('Conferences'), '', 'compress', ['List']) }}
 {% endblock %}
 
 {% block content %}
   <section class="content">
-    {% call build_list_containers('Conference', 'compress') %}
+    {% call build_list_containers(_('Conferences'), 'compress') %}
       {% call build_list_table() %}
         {% call build_list_table_headers() %}
-          <th>Name</th>
-          <th>Extension</th>
-          <th>PIN</th>
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Extension') }}</th>
+          <th>{{ _('PIN') }}</th>
           {{ add_list_table_header_action() }}
         {% endcall %}
         {% call(conference) build_list_table_rows(resource_list['items']) %}
           <td>{{ conference.name }}</td>
           <td>
             {% for extension in conference.extensions %}
-              <strong>internal:</strong> {{ extension.exten }}
+              <strong>{{ _('internal') }}:</strong> {{ extension.exten }}
             {% endfor %}
             {% for extensions in conference.incalls %}
               {% for extension in extensions.extensions %}
-                <strong>incall:</strong> {{ extension.exten }}
+                <strong>{{ _('incall') }}:</strong> {{ extension.exten }}
               {% endfor %}
             {% endfor %}
             {{ '-' if not conference.extensions and not conference.incalls }}
@@ -36,9 +36,9 @@
       {% endcall %}
     {% endcall %}
 
-    {% call build_hidden_add_containers('Add Conference') %}
+    {% call build_hidden_add_containers(_('Add Conference')) %}
       {% call build_form() %}
-        {% call add_default_fields(form=form, submit_value="Add") %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
           {{ render_field(form.name) }}
           {{ render_field(form.extension) }}
           {{ render_field(form.pin) }}
