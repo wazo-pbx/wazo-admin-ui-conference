@@ -4,8 +4,13 @@
 
 from flask_babel import lazy_gettext as l_
 from flask_wtf import FlaskForm
-from wtforms.fields import SubmitField, TextField, BooleanField
+from wtforms.fields import (SubmitField,
+                            TextField,
+                            SelectField,
+                            BooleanField)
 from wtforms.validators import InputRequired
+
+from wazo_admin_ui.helpers.destination import DestinationHiddenField
 
 
 class ConferenceForm(FlaskForm):
@@ -20,3 +25,9 @@ class ConferenceForm(FlaskForm):
     preprocess_subroutine = TextField(l_('Subroutine'))
     quiet_join_leave = BooleanField(l_('Quiet join/leave'), default=True)
     submit = SubmitField()
+
+class ConferenceDestinationForm(FlaskForm):
+    setted_value_template = '{conference_name}'
+
+    conference_id = SelectField('Conference', choices=[])
+    conference_name = DestinationHiddenField()
