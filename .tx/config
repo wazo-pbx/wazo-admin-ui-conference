@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[wazo.wazo-admin-ui-conference]
+file_filter = conference/translations/<lang>/LC_MESSAGES/messages.po
+source_file = conference/translations/messages.pot
+source_lang = en
+type = PO
