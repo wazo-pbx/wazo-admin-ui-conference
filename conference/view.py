@@ -4,11 +4,14 @@
 
 from __future__ import unicode_literals
 
+from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
 from flask_menu.classy import classy_menu_item
 from marshmallow import fields
 
-from wazo_admin_ui.helpers.classful import BaseView, BaseDestinationView
+from wazo_admin_ui.helpers.classful import BaseView, LoginRequiredView
+from wazo_admin_ui.helpers.classful import extract_select2_params, build_select2_response
+
 from wazo_admin_ui.helpers.mallow import BaseSchema, BaseAggregatorSchema, extract_form_fields
 
 from .form import ConferenceForm
@@ -49,7 +52,7 @@ class ConferenceView(BaseView):
         return self.form(data=data['conference'], extension=main_exten)
 
 
-class ConferenceDestinationView(BaseDestinationView):
+class ConferenceDestinationView(LoginRequiredView):
 
     def list_json(self):
         return self._list_json('id')
@@ -58,11 +61,11 @@ class ConferenceDestinationView(BaseDestinationView):
         return self._list_json('uuid')
 
     def _list_json(self, field_id):
-        params = self._extract_params()
+        params = extract_select2_params(request.args)
         conferences = self.service.list(**params)
         results = []
         for conference in conferences['items']:
             text = '{}'.format(conference['name'])
             results.append({'id': conference[field_id], 'text': text})
 
-        return self._select2_response(results, conferences['total'], params)
+        return jsonify(build_select2_response(results, conferences['total'], params))
