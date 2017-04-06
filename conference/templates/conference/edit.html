@@ -5,19 +5,21 @@
 {% endblock %}
 
 {% block content %}
-  {% call build_form_box(_('Conference'), resources.conference.name, 'compress') %}
-    {% call build_form(action=url_for('.ConferenceView:put', id=resources.conference.id)) %}
-      {% call add_default_fields(form=form, submit_value=_('Update')) %}
-        {{ render_field(form.name) }}
-        {{ render_field(form.extension) }}
-        {{ render_field(form.pin) }}
-        {{ render_field(form.admin_pin) }}
-        {{ render_field(form.announce_join_leave) }}
-        {{ render_field(form.announce_user_count) }}
-        {{ render_field(form.announce_only_user) }}
-        {{ render_field(form.music_on_hold) }}
-        {{ render_field(form.preprocess_subroutine) }}
-        {{ render_field(form.quiet_join_leave) }}
+  {% call build_section_row() %}
+    {% call build_form_box(_('Conference'), resources.conference.name, 'compress') %}
+      {% call build_form(action=url_for('.ConferenceView:put', id=resources.conference.id)) %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.extension) }}
+          {{ render_field(form.pin) }}
+          {{ render_field(form.admin_pin) }}
+          {{ render_field(form.announce_join_leave) }}
+          {{ render_field(form.announce_user_count) }}
+          {{ render_field(form.announce_only_user) }}
+          {{ render_field(form.music_on_hold) }}
+          {{ render_field(form.preprocess_subroutine) }}
+          {{ render_field(form.quiet_join_leave) }}
+        {% endcall %}
       {% endcall %}
     {% endcall %}
   {% endcall %}
