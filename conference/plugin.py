@@ -18,13 +18,12 @@ class Plugin(object):
 
     def load(self, dependencies):
         core = dependencies['flask']
-        config = dependencies['config']
 
-        ConferenceView.service = ConferenceService(config['confd'])
+        ConferenceView.service = ConferenceService()
         ConferenceView.register(conference, route_base='/conferences')
         register_flaskview(conference, ConferenceView)
 
-        ConferenceDestinationView.service = ConferenceService(config['confd'])
+        ConferenceDestinationView.service = ConferenceService()
         ConferenceDestinationView.register(conference, route_base='/conference_destination')
 
         register_destination_form('conference', 'Conference', ConferenceDestinationForm)
