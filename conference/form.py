@@ -28,7 +28,7 @@ class ConferenceForm(FlaskForm):
 
 
 class ConferenceDestinationForm(FlaskForm):
-    setted_value_template = '{conference_name}'
+    setted_value_template = u'{conference_name}'
 
     conference_id = SelectField('Conference', choices=[])
     conference_name = DestinationHiddenField()
