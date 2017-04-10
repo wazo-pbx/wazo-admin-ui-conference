@@ -7,49 +7,38 @@ from __future__ import unicode_literals
 from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
 from flask_menu.classy import classy_menu_item
-from marshmallow import fields
 
 from wazo_admin_ui.helpers.classful import BaseView, LoginRequiredView
 from wazo_admin_ui.helpers.classful import extract_select2_params, build_select2_response
 
-from wazo_admin_ui.helpers.mallow import BaseSchema, BaseAggregatorSchema, extract_form_fields
-
 from .form import ConferenceForm
-
-
-class ConferenceSchema(BaseSchema):
-
-    class Meta:
-        fields = extract_form_fields(ConferenceForm)
-
-
-class ExtensionSchema(BaseSchema):
-    context = fields.String(default='default')
-    exten = fields.String(attribute='extension')
-
-
-class AggregatorSchema(BaseAggregatorSchema):
-    _main_resource = 'conference'
-
-    conference = fields.Nested(ConferenceSchema)
-    extension = fields.Nested(ExtensionSchema)
 
 
 class ConferenceView(BaseView):
 
+    resource_name = 'conference'
     form = ConferenceForm
     resource = l_('conference')
-    schema = AggregatorSchema
 
     @classy_menu_item('.conferences', l_('Conferences'), order=1, icon="compress")
     def index(self):
         return super(ConferenceView, self).index()
 
     def _map_resources_to_form(self, resources):
-        schema = self.schema()
-        data = schema.load(resources).data
-        main_exten = schema.get_main_exten(resources['conference'].get('extensions', {}))
-        return self.form(data=data['conference'], extension=main_exten)
+        return self.form(data=resources['conference'])
+
+    def _map_form_to_resources(self, form, form_id=None):
+        conference = form.to_dict()
+        resources = {'conference': conference,
+                     'extension': conference['extensions'][0]}
+        if form_id:
+            resources['conference']['id'] = form_id
+        return resources
+
+    def _map_resources_to_form_errors(self, form, resources):
+        form.populate_errors(resources.get('conference', {}))
+        form.extensions[0].populate_errors(resources.get('extension', {}))
+        return form
 
 
 class ConferenceDestinationView(LoginRequiredView):

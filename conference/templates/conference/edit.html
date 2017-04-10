@@ -10,7 +10,7 @@
       {% call build_form(action=url_for('.ConferenceView:put', id=resources.conference.id)) %}
         {% call add_default_fields(form=form, submit_value=_('Update')) %}
           {{ render_field(form.name) }}
-          {{ render_field(form.extension) }}
+          {{ render_field(form.extensions[0].exten) }}
           {{ render_field(form.pin) }}
           {{ render_field(form.admin_pin) }}
           {{ render_field(form.announce_join_leave) }}

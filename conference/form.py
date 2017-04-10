@@ -3,19 +3,26 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
-from flask_wtf import FlaskForm
 from wtforms.fields import (SubmitField,
                             StringField,
                             SelectField,
+                            FormField,
+                            FieldList,
                             BooleanField)
 from wtforms.validators import InputRequired
 
 from wazo_admin_ui.helpers.destination import DestinationHiddenField
+from wazo_admin_ui.helpers.form import BaseForm
 
 
-class ConferenceForm(FlaskForm):
+class ExtensionForm(BaseForm):
+    exten = StringField(l_('Extension'))
+    context = StringField(default='default')
+
+
+class ConferenceForm(BaseForm):
     name = StringField(l_('Name'), [InputRequired()])
-    extension = StringField(l_('Extension'))
+    extensions = FieldList(FormField(ExtensionForm), min_entries=1)
     announce_join_leave = BooleanField(l_('Announce join leave'), default=True)
     announce_only_user = BooleanField(l_('Announce only user'), default=True)
     announce_user_count = BooleanField(l_('Announce user count'), default=True)
@@ -27,7 +34,7 @@ class ConferenceForm(FlaskForm):
     submit = SubmitField()
 
 
-class ConferenceDestinationForm(FlaskForm):
+class ConferenceDestinationForm(BaseForm):
     setted_value_template = u'{conference_name}'
 
     conference_id = SelectField('Conference', choices=[])
