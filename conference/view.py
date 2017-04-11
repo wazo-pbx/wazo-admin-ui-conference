@@ -24,17 +24,6 @@ class ConferenceView(BaseView):
     def index(self):
         return super(ConferenceView, self).index()
 
-    def _map_resources_to_form(self, resources):
-        return self.form(data=resources['conference'])
-
-    def _map_form_to_resources(self, form, form_id=None):
-        conference = form.to_dict()
-        resources = {'conference': conference,
-                     'extension': conference['extensions'][0]}
-        if form_id:
-            resources['conference']['id'] = form_id
-        return resources
-
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('conference', {}))
         form.extensions[0].populate_errors(resources.get('extension', {}))
