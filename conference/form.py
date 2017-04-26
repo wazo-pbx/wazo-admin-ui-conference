@@ -9,7 +9,7 @@ from wtforms.fields import (SubmitField,
                             FormField,
                             FieldList,
                             BooleanField)
-from wtforms.validators import InputRequired
+from wtforms.validators import InputRequired, Length, Regexp
 
 from wazo_admin_ui.helpers.destination import DestinationHiddenField
 from wazo_admin_ui.helpers.form import BaseForm
@@ -21,15 +21,15 @@ class ExtensionForm(BaseForm):
 
 
 class ConferenceForm(BaseForm):
-    name = StringField(l_('Name'), [InputRequired()])
+    name = StringField(l_('Name'), [InputRequired(), Length(max=128)])
     extensions = FieldList(FormField(ExtensionForm), min_entries=1)
     announce_join_leave = BooleanField(l_('Announce join leave'), default=True)
     announce_only_user = BooleanField(l_('Announce only user'), default=True)
     announce_user_count = BooleanField(l_('Announce user count'), default=True)
-    music_on_hold = StringField(l_('Music On Hold'))
-    pin = StringField(l_('PIN'))
-    admin_pin = StringField(l_('Admin PIN'))
-    preprocess_subroutine = StringField(l_('Subroutine'))
+    music_on_hold = StringField(l_('Music On Hold'), [Length(max=128)])
+    pin = StringField(l_('PIN'), [Regexp(r'^[0-9]+$'), Length(max=80)])
+    admin_pin = StringField(l_('Admin PIN'), [Regexp(r'^[0-9]+$'), Length(max=80)])
+    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=39)])
     quiet_join_leave = BooleanField(l_('Quiet join/leave'), default=True)
     submit = SubmitField()
 
@@ -37,5 +37,5 @@ class ConferenceForm(BaseForm):
 class ConferenceDestinationForm(BaseForm):
     setted_value_template = u'{conference_name}'
 
-    conference_id = SelectField('Conference', choices=[])
+    conference_id = SelectField('Conference', choices=[], validators=[InputRequired()])
     conference_name = DestinationHiddenField()
