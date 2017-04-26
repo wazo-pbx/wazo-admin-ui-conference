@@ -27,8 +27,12 @@ class ConferenceForm(BaseForm):
     announce_only_user = BooleanField(l_('Announce only user'), default=True)
     announce_user_count = BooleanField(l_('Announce user count'), default=True)
     music_on_hold = StringField(l_('Music On Hold'), [Length(max=128)])
-    pin = StringField(l_('PIN'), [Regexp(r'^[0-9]+$'), Length(max=80)])
-    admin_pin = StringField(l_('Admin PIN'), [Regexp(r'^[0-9]+$'), Length(max=80)])
+    pin = StringField(l_('PIN'),
+                      [Regexp(r'^[0-9]+$'), Length(max=80)],
+                      render_kw={'type': 'password', 'data_toggle': 'password'})
+    admin_pin = StringField(l_('Admin PIN'),
+                            [Regexp(r'^[0-9]+$'), Length(max=80)],
+                            render_kw={'type': 'password', 'data_toggle': 'password'})
     preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=39)])
     quiet_join_leave = BooleanField(l_('Quiet join/leave'), default=True)
     submit = SubmitField()
