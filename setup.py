@@ -39,7 +39,7 @@ setup(
               'update_catalog': babel.update_catalog},
     entry_points={
         'wazo_admin_ui.plugins': [
-            'conference = conference.plugin:Plugin',
+            'conference = wazo_plugind_admin_ui_conference_official.plugin:Plugin',
         ]
     }
 )

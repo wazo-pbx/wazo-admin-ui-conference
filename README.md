@@ -1,19 +1,5 @@
 Conference plugin for wazo-admin-ui
 
-Install
--------
-
-    wazo/rules build
-    wazo/rules install
-
-Uninstall
----------
-
-You need to have python-pip installed.
-
-    wazo/rules uninstall
-
-
 Translations
 ------------
 
@@ -29,7 +15,7 @@ To update existing translations catalog:
 
     % python setup.py update_catalog
 
-Edit file `conference/translations/<locale>/LC_MESSAGES/messages.po` and compile
+Edit file `wazo_plugind_admin_ui_conference_official/translations/<locale>/LC_MESSAGES/messages.po` and compile
 using:
 
     % python setup.py compile_catalog
