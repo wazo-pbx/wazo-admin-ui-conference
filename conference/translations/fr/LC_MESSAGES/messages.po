@@ -1,17 +1,16 @@
 # Translations template for wazo_admin_ui_conference.
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright (C) 2017 Wazo Authors
 # This file is distributed under the same license as the
 # wazo_admin_ui_conference project.
-# Wazo Dev Team <dev@wazo.community>, 2017.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 # 
-# Translators:
-# Francois Blackburn <fblackburn@wazo.community>, 2017
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: wazo_admin_ui_conference 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-03-06 10:39-0500\n"
-"PO-Revision-Date: 2017-03-06 10:39-0500\n"
+"POT-Creation-Date: 2017-05-09 14:43-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Francois Blackburn <fblackburn@wazo.community>, 2017\n"
 "Language-Team: French (https://www.transifex.com/wazo/teams/69545/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -21,76 +20,80 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: conference/form.py:12 conference/templates/conference/list.html:12
-msgid "Name"
-msgstr "Nom"
-
-#: conference/form.py:13 conference/templates/conference/list.html:13
+#: wazo_plugind_admin_ui_conference_official/form.py:19
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:13
 msgid "Extension"
 msgstr "Extension"
 
-#: conference/form.py:14
+#: wazo_plugind_admin_ui_conference_official/form.py:24
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:12
+msgid "Name"
+msgstr "Nom"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:26
 msgid "Announce join leave"
 msgstr "Annonce arrivée départ"
 
-#: conference/form.py:15
+#: wazo_plugind_admin_ui_conference_official/form.py:27
 msgid "Announce only user"
 msgstr "Annonce pour le premier participant"
 
-#: conference/form.py:16
+#: wazo_plugind_admin_ui_conference_official/form.py:28
 msgid "Announce user count"
 msgstr "Annonce nombre participant"
 
-#: conference/form.py:17
+#: wazo_plugind_admin_ui_conference_official/form.py:29
 msgid "Music On Hold"
 msgstr "Musique d'attente"
 
-#: conference/form.py:18 conference/templates/conference/list.html:14
+#: wazo_plugind_admin_ui_conference_official/form.py:30
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:14
 msgid "PIN"
 msgstr "PIN"
 
-#: conference/form.py:19
+#: wazo_plugind_admin_ui_conference_official/form.py:33
 msgid "Admin PIN"
 msgstr "Admin PIN"
 
-#: conference/form.py:20
+#: wazo_plugind_admin_ui_conference_official/form.py:36
 msgid "Subroutine"
 msgstr "sous-routine"
 
-#: conference/form.py:21
+#: wazo_plugind_admin_ui_conference_official/form.py:37
 msgid "Quiet join/leave"
 msgstr "Silence arrivée/départ"
 
-#: conference/view.py:38
+#: wazo_plugind_admin_ui_conference_official/view.py:21
 msgid "conference"
 msgstr "conférence"
 
-#: conference/templates/conference/edit.html:4
-#: conference/templates/conference/list.html:4
-#: conference/templates/conference/list.html:9 conference/view.py:41
+#: wazo_plugind_admin_ui_conference_official/templates/conference/edit.html:4
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:4
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:9
+#: wazo_plugind_admin_ui_conference_official/view.py:23
 msgid "Conferences"
 msgstr "Conférences"
 
-#: conference/templates/conference/edit.html:8
+#: wazo_plugind_admin_ui_conference_official/templates/conference/edit.html:9
 msgid "Conference"
 msgstr "Conférence"
 
-#: conference/templates/conference/edit.html:10
+#: wazo_plugind_admin_ui_conference_official/templates/conference/edit.html:11
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: conference/templates/conference/list.html:21
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:21
 msgid "internal"
 msgstr "interne"
 
-#: conference/templates/conference/list.html:25
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:25
 msgid "incall"
 msgstr "entrant"
 
-#: conference/templates/conference/list.html:39
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:39
 msgid "Add Conference"
 msgstr "Ajouter une Conférence"
 
-#: conference/templates/conference/list.html:41
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:41
 msgid "Add"
 msgstr "Ajouter"
