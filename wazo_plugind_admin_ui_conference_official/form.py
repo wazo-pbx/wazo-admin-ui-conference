@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
@@ -39,7 +38,7 @@ class ConferenceForm(BaseForm):
 
 
 class ConferenceDestinationForm(BaseForm):
-    setted_value_template = u'{conference_name}'
+    setted_value_template = '{conference_name}'
 
     conference_id = SelectField('Conference', choices=[], validators=[InputRequired()])
     conference_name = DestinationHiddenField()
