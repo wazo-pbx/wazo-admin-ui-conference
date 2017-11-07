@@ -38,7 +38,7 @@ class ConferenceForm(BaseForm):
 
 
 class ConferenceDestinationForm(BaseForm):
-    setted_value_template = '{conference_name}'
+    set_value_template = '{conference_name}'
 
     conference_id = SelectField('Conference', choices=[], validators=[InputRequired()])
     conference_name = DestinationHiddenField()

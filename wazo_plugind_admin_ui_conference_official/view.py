@@ -23,10 +23,10 @@ class ConferenceView(BaseView):
 
     def _populate_form(self, form):
         for form_extension in form.extensions:
-            form_extension.context.choices = self._build_setted_choices_context(form_extension)
+            form_extension.context.choices = self._build_set_choices_context(form_extension)
         return form
 
-    def _build_setted_choices_context(self, extension):
+    def _build_set_choices_context(self, extension):
         if not extension.context.data or extension.context.data == 'None':
             return []
         return [(extension.context.data, extension.context.data)]
