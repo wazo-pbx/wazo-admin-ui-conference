@@ -8,11 +8,10 @@
   <section class="content">
     {% call build_list_containers(_('Conferences'), 'compress') %}
       {% call build_list_table() %}
-        {% call build_list_table_headers() %}
+        {% call build_list_table_headers(get=url_for('.ConferenceView:get', id=''), delete=url_for('.ConferenceView:delete', id='')) %}
           <th>{{ _('Name') }}</th>
           <th>{{ _('Extension') }}</th>
           <th>{{ _('PIN') }}</th>
-          {{ add_list_table_header_action() }}
         {% endcall %}
         {% call(conference) build_list_table_rows(resource_list['items']) %}
           <td>{{ conference.name }}</td>
@@ -28,10 +27,6 @@
             {{ '-' if not conference.extensions and not conference.incalls }}
           </td>
           <td>{{ conference.pin or '-' }}</td>
-          <td>
-            {{ add_edit_button(href=url_for('.ConferenceView:get', id=conference.id)) }}
-            {{ add_delete_button(href=url_for('.ConferenceView:delete', id=conference.id)) }}
-          </td>
         {% endcall %}
       {% endcall %}
     {% endcall %}
