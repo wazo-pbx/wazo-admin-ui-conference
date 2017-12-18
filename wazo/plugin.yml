@@ -11,6 +11,7 @@ homepage: https://github.com/wazo-pbx/wazo-admin-ui-conference
 depends:
   - name: admin-ui-context
     namespace: official
+    version: 1.0.1
   - name: admin-ui-extension
     namespace: official
-
+    version: 1.2.0
