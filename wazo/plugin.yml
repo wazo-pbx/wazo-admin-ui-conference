@@ -8,4 +8,9 @@ tags:
   - beta
   - application
 homepage: https://github.com/wazo-pbx/wazo-admin-ui-conference
+depends:
+  - name: admin-ui-context
+    namespace: official
+  - name: admin-ui-extension
+    namespace: official
 
