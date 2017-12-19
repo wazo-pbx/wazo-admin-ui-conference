@@ -22,13 +22,24 @@ class ConferenceView(BaseView):
         return super(ConferenceView, self).index()
 
     def _populate_form(self, form):
-        for form_extension in form.extensions:
-            form_extension.context.choices = self._build_set_choices_context(form_extension)
+        form.extensions[0].exten.choices = self._build_set_choices_exten(form.extensions[0])
+        form.extensions[0].context.choices = self._build_set_choices_context(form.extensions[0])
         return form
+
+    def _build_set_choices_exten(self, extension):
+        if not extension.exten.data or extension.exten.data == 'None':
+            return []
+        return [(extension.exten.data, extension.exten.data)]
 
     def _build_set_choices_context(self, extension):
         if not extension.context.data or extension.context.data == 'None':
-            return []
+            context = self.service.get_first_internal_context()
+        else:
+            context = self.service.get_context(extension.context.data)
+
+        if context:
+            return [(context['name'], context['label'])]
+
         return [(extension.context.data, extension.context.data)]
 
     def _map_resources_to_form_errors(self, form, resources):

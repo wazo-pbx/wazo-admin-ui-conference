@@ -15,7 +15,7 @@ from wazo_admin_ui.helpers.form import BaseForm
 
 
 class ExtensionForm(BaseForm):
-    exten = StringField(l_('Extension'))
+    exten = SelectField(l_('Extension'), choices=[])
     context = SelectField(l_('Context'), choices=[])
 
 
