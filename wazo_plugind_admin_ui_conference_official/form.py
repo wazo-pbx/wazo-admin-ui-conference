@@ -40,5 +40,14 @@ class ConferenceForm(BaseForm):
 class ConferenceDestinationForm(BaseForm):
     set_value_template = '{conference_name}'
 
-    conference_id = SelectField('Conference', choices=[], validators=[InputRequired()])
+    conference_id = SelectField(l_('Conference'), choices=[], validators=[InputRequired()])
+    conference_name = DestinationHiddenField()
+
+
+class ConferenceFuncKeyDestinationForm(BaseForm):
+    set_value_template = '{conference_name}'
+
+    #conference_id references old meetme system with different id
+    #conference_id = SelectField(l_('Conference'), choices=[], validators=[InputRequired()])
+    conference_id = StringField(l_('Conference'), validators=[InputRequired()], description=l_('Do not edit this id.'))
     conference_name = DestinationHiddenField()
