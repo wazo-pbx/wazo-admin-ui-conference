@@ -1,4 +1,4 @@
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -47,7 +47,7 @@ class ConferenceDestinationForm(BaseForm):
 class ConferenceFuncKeyDestinationForm(BaseForm):
     set_value_template = '{conference_name}'
 
-    #conference_id references old meetme system with different id
-    #conference_id = SelectField(l_('Conference'), choices=[], validators=[InputRequired()])
+    # conference_id references old meetme system with different id
+    # conference_id = SelectField(l_('Conference'), choices=[], validators=[InputRequired()])
     conference_id = StringField(l_('Conference'), validators=[InputRequired()], description=l_('Do not edit this id.'))
     conference_name = DestinationHiddenField()
