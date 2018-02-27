@@ -58,7 +58,7 @@ msgstr "Admin PIN"
 
 #: wazo_plugind_admin_ui_conference_official/form.py:36
 msgid "Subroutine"
-msgstr "sous-routine"
+msgstr "Sous-routine"
 
 #: wazo_plugind_admin_ui_conference_official/form.py:37
 msgid "Quiet join/leave"
